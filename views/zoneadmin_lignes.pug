@@ -1,0 +1,40 @@
+extends layout_zoneadmin
+
+block content
+    div(style="margin:40px")
+        h3 Nouvelle ligne
+            br
+            font(size="3", color='red') #{messageErreur}
+            form(action='/grp17/zoneadmin/zoneadmin_lignes', method='POST', autocomplete='off')
+                input(type='text', name='fromStation', placeholder='Entrez la station de départ', class="autocomplete recherche")
+                br
+                input(type='text', name='toStation', placeholder='Entrez la station arrivée', class="autocomplete recherche")
+                br
+                input.validate(type='text', id='date', name='dateRes', placeholder='Entrez une date' class='datepicker', required)
+                br
+                button.btn.waves-effect.waves-light.background.red.accent-4(type="submit", name="action") Enregistrer
+                br
+                br
+        h3 Lignes existantes dans ma zone
+        table#tableReservation.highlight
+            thead
+                tr
+                    th Ligne
+                    th Station-départ
+                    th Station-arrivée
+                    th Opérateur
+                    th
+            tbody
+                each line in lines
+                    tr
+                        .zone
+                            td
+                                value=line.lineName
+                            td
+                                value=line.fromStation
+                            td
+                                value=line.toStation
+                            td
+                                value=line.operator
+                            td
+                                button.right.btn.waves-effect.waves-light.background.red.accent-4(onclick='deleteLine(' + line.id_line + ')') Delete

@@ -1,0 +1,17 @@
+extends layout_client
+
+block content
+    div(style="margin:40px")
+        h3 #{translation.CONTACTTITRE}
+        form(action='/grp17/client/client_contact', method='POST')
+            label(for='clientName') #{translation.NOM}*
+            input.validate(type='text',name='name', id='clientName', required)
+            br
+            label(for='clientEmail') #{translation.EMAIL}*
+            input.validate(type='text', name='email', id='clientEmail', required)
+            br
+            label(for='clientText') #{translation.TEXTE}*
+            textarea.materialize-textarea(name='textClient', id='clientText', required)
+            br
+            p.grey-text #{translation.CHAMPSOBLIGATOIRES}
+            button.btn.waves-effect.waves-light.background.red.accent-4(type="submit", name="action") #{translation.BOUTONENVOIMAIL}

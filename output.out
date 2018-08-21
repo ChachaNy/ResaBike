@@ -1,0 +1,122 @@
+Wed, 11 Apr 2018 18:49:53 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+Executing (default): CREATE TABLE IF NOT EXISTS `Dates` (`id_date` INTEGER auto_increment , `day` VARCHAR(255) NOT NULL, `month` VARCHAR(255) NOT NULL, `year` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id_date`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Dates` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Zones` (`id_zone` INTEGER auto_increment , `zoneName` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id_zone`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Zones` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Lines` (`id_line` INTEGER auto_increment , `lineName` VARCHAR(255) NOT NULL, `fromStation` VARCHAR(255) NOT NULL, `toStation` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_zone` INTEGER NOT NULL, PRIMARY KEY (`id_line`), FOREIGN KEY (`id_zone`) REFERENCES `Zones` (`id_zone`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Lines` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Journeys` (`id_journey` INTEGER auto_increment , `journeyNumber` VARCHAR(255) NOT NULL, `horaire` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_line` INTEGER NOT NULL, PRIMARY KEY (`id_journey`), FOREIGN KEY (`id_line`) REFERENCES `Lines` (`id_line`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Journeys` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Reservations` (`id_reservation` INTEGER auto_increment , `firstName` VARCHAR(255) NOT NULL, `lastName` VARCHAR(255) NOT NULL, `telephon` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL, `numberBikes` INTEGER NOT NULL, `groupName` VARCHAR(255) NOT NULL, `from` VARCHAR(255) NOT NULL, `to` VARCHAR(255) NOT NULL, `remarks` VARCHAR(255), `NPA` VARCHAR(255), `country` VARCHAR(255), `state` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_date` INTEGER NOT NULL, PRIMARY KEY (`id_reservation`), FOREIGN KEY (`id_date`) REFERENCES `Dates` (`id_date`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Reservations` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `JourneyReservations` (`id` INTEGER NOT NULL auto_increment , `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_journey` INTEGER NOT NULL, `id_reservation` INTEGER NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`id_journey`) REFERENCES `Journeys` (`id_journey`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`id_reservation`) REFERENCES `Reservations` (`id_reservation`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `JourneyReservations` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Stations` (`id_station` INTEGER auto_increment , `stationName` VARCHAR(255) NOT NULL, `stopId` VARCHAR(255) NOT NULL, `coordinatedX` DOUBLE PRECISION, `coordinatedY` DOUBLE PRECISION, `count` BIGINT NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id_station`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Stations` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `LineStations` (`id` INTEGER NOT NULL auto_increment , `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_line` INTEGER NOT NULL, `id_station` INTEGER NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`id_line`) REFERENCES `Lines` (`id_line`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`id_station`) REFERENCES `Stations` (`id_station`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `LineStations` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Roles` (`id_role` INTEGER auto_increment , `roleName` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id_role`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Roles` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Logins` (`id_login` INTEGER auto_increment , `username` VARCHAR(255) NOT NULL, `password_hash` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_zone` INTEGER, `id_role` INTEGER NOT NULL, PRIMARY KEY (`id_login`), FOREIGN KEY (`id_zone`) REFERENCES `Zones` (`id_zone`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`id_role`) REFERENCES `Roles` (`id_role`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Logins` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `PersonContacts` (`id_personContact` INTEGER auto_increment , `firstName` VARCHAR(255), `lastName` VARCHAR(255), `telephon` VARCHAR(255), `email` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_zone` INTEGER NOT NULL, PRIMARY KEY (`id_personContact`), FOREIGN KEY (`id_zone`) REFERENCES `Zones` (`id_zone`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `PersonContacts` FROM `grp17`
+Executing (default): SELECT `id_role`, `roleName`, `createdAt`, `updatedAt` FROM `Roles` AS `Role`;
+Executing (default): SELECT `id_login`, `username`, `password_hash`, `createdAt`, `updatedAt`, `id_zone`, `id_role` FROM `Logins` AS `Login` WHERE `Login`.`username` = 'sysadmin' LIMIT 1;
+error: restarting script because change changed
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #1
+Wed, 11 Apr 2018 18:49:54 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+Executing (default): CREATE TABLE IF NOT EXISTS `Dates` (`id_date` INTEGER auto_increment , `day` VARCHAR(255) NOT NULL, `month` VARCHAR(255) NOT NULL, `year` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id_date`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Dates` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Zones` (`id_zone` INTEGER auto_increment , `zoneName` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id_zone`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Zones` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Lines` (`id_line` INTEGER auto_increment , `lineName` VARCHAR(255) NOT NULL, `fromStation` VARCHAR(255) NOT NULL, `toStation` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_zone` INTEGER NOT NULL, PRIMARY KEY (`id_line`), FOREIGN KEY (`id_zone`) REFERENCES `Zones` (`id_zone`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Lines` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Journeys` (`id_journey` INTEGER auto_increment , `journeyNumber` VARCHAR(255) NOT NULL, `horaire` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_line` INTEGER NOT NULL, PRIMARY KEY (`id_journey`), FOREIGN KEY (`id_line`) REFERENCES `Lines` (`id_line`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Journeys` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Reservations` (`id_reservation` INTEGER auto_increment , `firstName` VARCHAR(255) NOT NULL, `lastName` VARCHAR(255) NOT NULL, `telephon` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL, `numberBikes` INTEGER NOT NULL, `groupName` VARCHAR(255) NOT NULL, `from` VARCHAR(255) NOT NULL, `to` VARCHAR(255) NOT NULL, `remarks` VARCHAR(255), `NPA` VARCHAR(255), `country` VARCHAR(255), `state` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_date` INTEGER NOT NULL, PRIMARY KEY (`id_reservation`), FOREIGN KEY (`id_date`) REFERENCES `Dates` (`id_date`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Reservations` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `JourneyReservations` (`id` INTEGER NOT NULL auto_increment , `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_journey` INTEGER NOT NULL, `id_reservation` INTEGER NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`id_journey`) REFERENCES `Journeys` (`id_journey`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`id_reservation`) REFERENCES `Reservations` (`id_reservation`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `JourneyReservations` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Stations` (`id_station` INTEGER auto_increment , `stationName` VARCHAR(255) NOT NULL, `stopId` VARCHAR(255) NOT NULL, `coordinatedX` DOUBLE PRECISION, `coordinatedY` DOUBLE PRECISION, `count` BIGINT NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id_station`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Stations` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `LineStations` (`id` INTEGER NOT NULL auto_increment , `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_line` INTEGER NOT NULL, `id_station` INTEGER NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`id_line`) REFERENCES `Lines` (`id_line`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`id_station`) REFERENCES `Stations` (`id_station`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `LineStations` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Roles` (`id_role` INTEGER auto_increment , `roleName` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id_role`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Roles` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Logins` (`id_login` INTEGER auto_increment , `username` VARCHAR(255) NOT NULL, `password_hash` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_zone` INTEGER, `id_role` INTEGER NOT NULL, PRIMARY KEY (`id_login`), FOREIGN KEY (`id_zone`) REFERENCES `Zones` (`id_zone`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`id_role`) REFERENCES `Roles` (`id_role`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Logins` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `PersonContacts` (`id_personContact` INTEGER auto_increment , `firstName` VARCHAR(255), `lastName` VARCHAR(255), `telephon` VARCHAR(255), `email` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_zone` INTEGER NOT NULL, PRIMARY KEY (`id_personContact`), FOREIGN KEY (`id_zone`) REFERENCES `Zones` (`id_zone`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `PersonContacts` FROM `grp17`
+Executing (default): SELECT `id_role`, `roleName`, `createdAt`, `updatedAt` FROM `Roles` AS `Role`;
+Executing (default): SELECT `id_login`, `username`, `password_hash`, `createdAt`, `updatedAt`, `id_zone`, `id_role` FROM `Logins` AS `Login` WHERE `Login`.`username` = 'sysadmin' LIMIT 1;
+error: restarting script because change changed
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #2
+Wed, 11 Apr 2018 18:49:56 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+Executing (default): CREATE TABLE IF NOT EXISTS `Dates` (`id_date` INTEGER auto_increment , `day` VARCHAR(255) NOT NULL, `month` VARCHAR(255) NOT NULL, `year` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id_date`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Dates` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Zones` (`id_zone` INTEGER auto_increment , `zoneName` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id_zone`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Zones` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Lines` (`id_line` INTEGER auto_increment , `lineName` VARCHAR(255) NOT NULL, `fromStation` VARCHAR(255) NOT NULL, `toStation` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_zone` INTEGER NOT NULL, PRIMARY KEY (`id_line`), FOREIGN KEY (`id_zone`) REFERENCES `Zones` (`id_zone`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Lines` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Journeys` (`id_journey` INTEGER auto_increment , `journeyNumber` VARCHAR(255) NOT NULL, `horaire` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_line` INTEGER NOT NULL, PRIMARY KEY (`id_journey`), FOREIGN KEY (`id_line`) REFERENCES `Lines` (`id_line`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Journeys` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Reservations` (`id_reservation` INTEGER auto_increment , `firstName` VARCHAR(255) NOT NULL, `lastName` VARCHAR(255) NOT NULL, `telephon` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL, `numberBikes` INTEGER NOT NULL, `groupName` VARCHAR(255) NOT NULL, `from` VARCHAR(255) NOT NULL, `to` VARCHAR(255) NOT NULL, `remarks` VARCHAR(255), `NPA` VARCHAR(255), `country` VARCHAR(255), `state` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_date` INTEGER NOT NULL, PRIMARY KEY (`id_reservation`), FOREIGN KEY (`id_date`) REFERENCES `Dates` (`id_date`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Reservations` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `JourneyReservations` (`id` INTEGER NOT NULL auto_increment , `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_journey` INTEGER NOT NULL, `id_reservation` INTEGER NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`id_journey`) REFERENCES `Journeys` (`id_journey`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`id_reservation`) REFERENCES `Reservations` (`id_reservation`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `JourneyReservations` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Stations` (`id_station` INTEGER auto_increment , `stationName` VARCHAR(255) NOT NULL, `stopId` VARCHAR(255) NOT NULL, `coordinatedX` DOUBLE PRECISION, `coordinatedY` DOUBLE PRECISION, `count` BIGINT NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id_station`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Stations` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `LineStations` (`id` INTEGER NOT NULL auto_increment , `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_line` INTEGER NOT NULL, `id_station` INTEGER NOT NULL, PRIMARY KEY (`id`), FOREIGN KEY (`id_line`) REFERENCES `Lines` (`id_line`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`id_station`) REFERENCES `Stations` (`id_station`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `LineStations` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Roles` (`id_role` INTEGER auto_increment , `roleName` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id_role`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Roles` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `Logins` (`id_login` INTEGER auto_increment , `username` VARCHAR(255) NOT NULL, `password_hash` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_zone` INTEGER, `id_role` INTEGER NOT NULL, PRIMARY KEY (`id_login`), FOREIGN KEY (`id_zone`) REFERENCES `Zones` (`id_zone`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`id_role`) REFERENCES `Roles` (`id_role`) ON DELETE NO ACTION ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `Logins` FROM `grp17`
+Executing (default): CREATE TABLE IF NOT EXISTS `PersonContacts` (`id_personContact` INTEGER auto_increment , `firstName` VARCHAR(255), `lastName` VARCHAR(255), `telephon` VARCHAR(255), `email` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `id_zone` INTEGER NOT NULL, PRIMARY KEY (`id_personContact`), FOREIGN KEY (`id_zone`) REFERENCES `Zones` (`id_zone`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `PersonContacts` FROM `grp17`
+Executing (default): SELECT `id_role`, `roleName`, `createdAt`, `updatedAt` FROM `Roles` AS `Role`;
+Executing (default): SELECT `id_login`, `username`, `password_hash`, `createdAt`, `updatedAt`, `id_zone`, `id_role` FROM `Logins` AS `Login` WHERE `Login`.`username` = 'sysadmin' LIMIT 1;
+[0mGET /chauffeur [36m302 [0m16.661 ms - 100[0m
+error: restarting script because change changed
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #3
+Wed, 11 Apr 2018 18:49:57 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+error: restarting script because change changed
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #4
+Wed, 11 Apr 2018 18:49:58 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+error: restarting script because change changed
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #5
+Wed, 11 Apr 2018 18:49:59 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+error: restarting script because change changed
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #6
+Wed, 11 Apr 2018 18:50:00 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+error: restarting script because change changed
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #7
+Wed, 11 Apr 2018 18:50:01 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+error: restarting script because change changed
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #8
+Wed, 11 Apr 2018 18:50:03 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+error: restarting script because change changed
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #9
+Wed, 11 Apr 2018 18:50:04 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+error: restarting script because change changed
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #10
+Wed, 11 Apr 2018 18:50:05 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+error: restarting script because change changed
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #11
+Wed, 11 Apr 2018 18:50:06 GMT sequelize deprecated String based operators are now deprecated. Please use Symbol based operators for better security, read more at http://docs.sequelizejs.com/manual/tutorial/querying.html#operators at node_modules/sequelize/lib/sequelize.js:242:13
+error: restarting script because change changed
+error: Forever detected script was killed by signal: SIGKILL
+error: Script restart attempt #12
+error: Forever detected script was killed by signal: SIGKILL

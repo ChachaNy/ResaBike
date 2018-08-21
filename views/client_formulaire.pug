@@ -1,0 +1,78 @@
+extends layout_client
+
+block content
+    div(style="margin:40px")
+        h3 #{translation.RESERVATIONTITRE}
+
+        font(size="3") #{translation.STATIONDEPART} : #{from}
+        br
+        font(size="3") #{translation.STATIONARRIVEE} : #{to}
+        br
+        font(size="3") #{translation.DATE1} : #{translation.JOURS[departure.substr(0,1)]} #{departure.substr(2,11)}
+        br
+        font(size="3") #{translation.HORAIRE} : #{departure.substr(13,5)}
+
+            br
+            br
+            form(action='/grp17/client/client_confirmation', method='POST')
+                label(for='clientLastname') #{translation.NOM}*
+                input.validate(type='text',name='lastName', id='clientLastname', required)
+                br
+                label(for='clientFirstname') #{translation.PRENOM}*
+                input.validate(type='text',name='firstName', id='clientFirstname', required)
+                br
+                label(for='clientGroupName') #{translation.NOMGROUPE}*
+                input.validate(type='text', name='groupName', id='clientGroupName', required)
+                br
+                label(for='NPA') #{translation.NPA}
+                input.validate(type='text', name='NPA', id='NPA')
+                br
+                label(for='country') #{translation.COUNTRY}
+                input.validate(type='text', name='country', id='country')
+                br
+                label(for='clientTelephon') #{translation.TELEPHONE}*
+                input.validate(type='text', name='telephon', id='clientTelephon', required)
+                br
+                label(for='clientEmail') #{translation.EMAIL}*
+                input.validate(type='text', name='email' id='clientEmail', required)
+                br
+                label(for='clientRemarks') #{translation.REMARQUE}
+                input.validate(type='text', name='remarks' id='clientRemarks')
+                br
+                label(for='clientNumberBikes') #{translation.NOMBREVELOS} :
+                select.browser-default(id='clientNumberBikes', name='nbBikes')
+                    option(value="1", selected="") 1
+                    option(value="2") 2
+                    option(value="3") 3
+                    option(value="4") 4
+                    option(value="5") 5
+                    option(value="6") 6
+                    option(value="7") 7
+                    option(value="8") 8
+                    option(value="9") 9
+                    option(value="10") 10
+                    option(value="11") 11
+                    option(value="12") 12
+                    option(value="13") 13
+                    option(value="14") 14
+                    option(value="15") 15
+                    option(value="16") 16
+                    option(value="17") 17
+                    option(value="18") 18
+                    option(value="19") 19
+                    option(value="20") 20
+                br
+                input(type="checkbox", value="condition", id='condition', required)
+                label(for='condition', style="color:black") #{translation.CGAcceptation}
+                a(href="http://www.resabike.ch/conditions-generales/", target="blank")  #{translation.CG}
+                br
+                br
+                input(hidden=true, value=from, name='from')
+                input(hidden=true, value=to, name='to')
+                input(hidden=true, value=departure.substr(2,departure.length), name='departure')
+                p.grey-text #{translation.CHAMPSOBLIGATOIRES}
+                p.grey-text #{translation.MESSAGESTATISTIQUES}
+                button.btn.waves-effect.waves-light.background.red.accent-4(type="submit", name="action") #{translation.BOUTONRESERVER}
+
+                br
+                br

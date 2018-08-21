@@ -1,0 +1,37 @@
+extends layout_client
+
+block content
+    div(style="margin:40px")
+        h3 #{translation.RESERVATIONTITRE}
+        if(messageErreur===1)
+            font(size="3", color='green') #{translation.ERREUREMAILENVOYE}
+        else if(messageErreur===2)
+            font(size="3", color='red') #{translation.ERREURPLUSIEURSZONES}
+        else if(messageErreur === 3)
+            font(size="3", color='red') #{translation.ERREURSTATIONARRIVEEPASPROJET}
+            a(href="/grp17/client/client_contact", target="blank")  #{translation.LIENFORMULAIRECONTACT}
+        else if(messageErreur === 4)
+            font(size="3", color='red') #{translation.ERREURSTATIONDEPARTPASPROJET}
+            a(href="/grp17/client/client_contact", target="blank")  #{translation.LIENFORMULAIRECONTACT}
+        else if(messageErreur === 5)
+            font(size="3", color='red') #{translation.ERREURSTATIONDEPARTETARRIVEEPASPROJET}
+            a(href="/grp17/client/client_contact", target="blank")  #{translation.LIENFORMULAIRECONTACT}
+        else if(messageErreur === 6)
+            font(size="3", color='red') #{translation.ERREURPASDECONNEXIONS}
+        else
+            font(size="3", color='red')
+        form(action='/grp17/client/client_correspondances', method='POST', autocomplete='off')
+            label(for='from') #{translation.STATIONDEPART}
+            input.validate(type='text', id='from', name='station', class="autocomplete recherche", required)
+            br
+            label(for='to') #{translation.STATIONARRIVEE}
+            input.validate(type='text', id='to', name='station', class="autocomplete recherche", required)
+            br
+            label(for='date') #{translation.DATE1}
+            input.validate(type='text', id='date', name='dateRes', class='datepicker', required)
+            br
+            label(for='time') #{translation.HORAIRE}
+            input.validate(type='text', id='time', name='timeRes', class='timepicker', required)
+            br
+            button.btn.waves-effect.waves-light.background.red.accent-4(type="submit", name="action") #{translation.BOUTONCHERCHER}
+

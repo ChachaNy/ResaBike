@@ -1,0 +1,87 @@
+extends layout_superadmin
+
+block content
+    div(style="margin:40px")
+        h3 Nouvelle zone
+            form(action='/grp17/superadmin/superadmin_zones', method='POST')
+                input(type='text', name='zoneName', placeholder='Entrez le nom de la zone', autofocus, required)
+                br
+                input(type='text', name='username', placeholder='Entrez le login', required)
+                br
+                input(type='text', name='password', placeholder='Entrez un mot de passe', required)
+                br
+                ul(style="color:red; font-size:15px")
+                    li(id="errorPwdDriver") #{pwdErreur}
+                br
+                button.btn.waves-effect.waves-light.background.red.accent-4(type="submit", name="action") Enregistrer
+                br
+                br
+        h3 Zones existantes
+        table#tableReservation.highlight
+            thead
+                tr
+                    th Zone
+                    th Login personne contact
+                    th Chauffeur de bus
+                    th
+
+            tbody
+                each zone in zones
+                    tr
+                        .zone
+                            td
+                                value=zone.zoneName
+                            td
+                                value=zone.zoneLogin[0].username
+                            td
+                                value=zone.zoneLogin[1].username
+                            td
+                                button.right.btn.waves-effect.waves-light.background.red.accent-4(onclick='deleteZone(' + zone.id_zone + ')') Supprimer
+                                // Modal Trigger
+                                a(href="#modaleditzone", data-idzone=zone.id_zone, data-zonename=zone.zoneName, data-zoneusername=zone.zoneLogin[0].username, data-zonepassword=zone.zoneLogin[0].password, data-firstname=zone.zonePersonContact.firstName, data-lastname=zone.zonePersonContact.lastName, data-telephon=zone.zonePersonContact.telephon, data-email=zone.zonePersonContact.email, data-busdriverusername=zone.zoneLogin[1].username, data-busdriverpassword=zone.zoneLogin[1].password).waves-effect.waves-light.background.red.accent-4.right.btn.modal-trigger Details/Modifier
+                                // Modal Structure
+                                #modaleditzone.modal.modal-fixed-footer
+                                    .modal-content
+                                        h4 Modification de la zone
+                                        p
+                                            h5 Détails zone
+                                            label(for='idZone') Id Zone
+                                            input.validate(disabled="", type='text', id="idZone", autofocus)
+                                            br
+                                            label(for='zoneName') Nom zone
+                                            input(type='text', id="zoneName", autofocus)
+                                            br
+                                            label(for='zoneUsername') Login
+                                            input(type='text', id="zoneUsername", autofocus)
+                                            br
+                                            label(for='zonePassword') Password
+                                            input(type='text', id="zonePassword", autofocus)
+                                            br
+                                            h5 Détails personne contact
+                                            label(for='firstName') Prénom
+                                            input(type='text', id="firstName", autofocus)
+                                            br
+                                            label(for='lastName') Nom de famille
+                                            input(type='text', id="lastName", autofocus)
+                                            br
+                                            label(for='telephon') N° téléphone
+                                            input(type='text', id="telephon", autofocus)
+                                            br
+                                            label(for='email') Email
+                                            input(type='text', id="email", autofocus)
+                                            br
+                                            h5 Détails chauffeur de bus
+                                            label(for='busdriverUsername') Login
+                                            input(type='text', id="busdriverUsername", autofocus)
+                                            br
+                                            label(for='busdriverPassword') Password
+                                            input(type='text', id="busdriverPassword", autofocus)
+                                            br
+                                    .modal-footer
+                                        ul.left(style="color:red")
+                                            li(id="errorLoginAdmin" hidden) Le login admin est requis
+                                            li(id="errorLoginDriver" hidden) Le login chauffeur est requis
+                                            li(id="errorPwdAdmin" hidden) Le mot de passe admin doit être vide (pas modifié) ou minimum 6 caractères
+                                            li(id="errorPwdDriver" hidden) Le mot de passe chauffeur doit être vide (pas modifié) ou minimum 6 caractères
+                                            li(id="errorZonename" hidden) Un nom de zone est requis
+                                        button.modal-action.btn.waves-effect.waves-light.background.red.accent-4(onclick='updateZoneInfos()') Enregistrer

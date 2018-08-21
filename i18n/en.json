@@ -1,0 +1,70 @@
+{
+  "LAYOUTAPROPOS": "About",
+  "LANGUEMENU" : "Language",
+
+  "RESERVATIONTITRE" : "Announce your trip",
+  "STATIONDEPART" : "Departure station",
+  "STATIONARRIVEE" : "Destination",
+  "DATE1" : "Date of travel",
+  "HORAIRE" : "Departure time",
+  "BOUTONCHERCHER" : "Search matches",
+  "CORRESPONDANCESTITRE" : "Connections",
+  "HEUREDEPART" : "Departure time",
+  "HEUREARRIVEE" : "Arrival time",
+  "OPERATOR" : "Operator",
+  "BOUTONRESERVER" : "Book",
+
+  "RESUME" : "Your research",
+
+  "NOM" : "Last Name",
+  "PRENOM" : "First Name",
+  "NOMGROUPE" : "Group name",
+  "TELEPHONE" : "Telephone (ex. +41 71 234 56 78)",
+  "EMAIL" : "Email",
+  "REMARQUE" : "Note",
+  "NOMBREVELOS" : "Number of bicycles",
+  "NPA": "ZIP code",
+  "COUNTRY" : "Country",
+
+  "CONFIRMATIONMERCI" : "Thank you for announcing your trip with your bike",
+  "CONFIRMATIONP1" : "Just give us a moment to check that there will be enough places available to transport your bike! Or, for example, to organize a trailer if that is possible on certain lines.",
+  "CONFIRMATIONP2" : "An email will be sent to you by the operations manager of the region or line on which you will be travelling. This as soon as he has been able to make sure that the transport of your bike can be done without worries.",
+
+  "CONTACT" : "Contact",
+  "CONTACTTITRE" : "Contact form",
+  "TEXTE" : "Text",
+  "BOUTONENVOIMAIL" : "Send email",
+
+  "ERREUREMAILENVOYE" : "Email sent",
+  "ERREURPLUSIEURSZONES" : "It is not possible to book in several areas",
+  "ERREURSTATIONARRIVEEPASPROJET" : "The arrival station is not part of the Resabike project. If you wish to submit a proposal for a new station, please contact us via our ",
+  "ERREURSTATIONDEPARTPASPROJET" : "The departure station entered is not part of the Resabike project. If you wish to submit a proposal for a new station, please contact us via our ",
+  "ERREURSTATIONDEPARTETARRIVEEPASPROJET" : "The departure station and the arrival station are not part of the Resabike project. If you wish to submit a proposal for a new station, please contact us via our ",
+  "ERREURPASDECONNEXIONS": "connection error",
+
+  "LIENFORMULAIRECONTACT" :"contact form",
+
+  "CHAMPSOBLIGATOIRES" : "*required fields",
+  "MESSAGESTATISTIQUES" : "Postal code and country will only be used for statistical purposes.",
+
+  "CG" :"Terms and conditions",
+  "CGAcceptation" :"I have read and accept the Terms and Conditions : ",
+
+  "JOURS":{
+    "1" :"Monday ",
+    "2" :"Tuesday ",
+    "3" :"Wednesday ",
+    "4" :"Thursday ",
+    "5" :"Friday ",
+    "6" :"Saturday ",
+    "0" :"Sunday "
+  },
+
+  "CONNEXION": "Login",
+  "MOTDEPASSE": "Password",
+
+  "RESERVATIONS": "Reservations",
+  "GESTIONLIGNES": "Lines management",
+  "GESTIONINFO": "Info management",
+  "GESTIONZONES": "Zone management"
+}

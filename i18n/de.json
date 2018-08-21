@@ -1,0 +1,70 @@
+{
+  "LAYOUTAPROPOS" : "Über uns",
+  "LANGUEMENU" : "Sprache",
+
+  "RESERVATIONTITRE" : "Melden Sie Ihre Reise an",
+  "STATIONDEPART" : "Abfahrtsstation",
+  "STATIONARRIVEE" : "Zielort",
+  "DATE1" : "Reisedatum",
+  "HORAIRE" : "Abfahrtszeit",
+  "BOUTONCHERCHER" : "Verbindungen suchen",
+  "CORRESPONDANCESTITRE" : "Korrespondenzen",
+  "HEUREDEPART" : "Abfahrtszeit",
+  "HEUREARRIVEE" : "Ankunftszeit",
+  "OPERATOR" : "Betreiber",
+  "BOUTONRESERVER" : "Buchen",
+
+  "RESUME" : "Ihre Forschung",
+
+  "NOM" : "Name",
+  "PRENOM" : "Vorname",
+  "NOMGROUPE" : "Gruppenname",
+  "TELEPHONE" : "Telefon (z.B. +41 71 234 56 78)",
+  "EMAIL" : "E-Mail",
+  "REMARQUE" : "Hinweis",
+  "NOMBREVELOS" : "Anzahl der Fahrräder",
+  "NPA" : "Postleitzahl",
+  "COUNTRY" : "Land",
+
+  "CONFIRMATIONMERCI" : "Danke, dass Sie Ihre Reise mit dem Fahrrad angekündigt haben",
+  "CONFIRMATIONP1" : "Geben Sie uns einfach einen Moment Zeit, um zu prüfen, ob genügend Plätze für den Transport Ihres Fahrrades vorhanden sind! oder z.B. um einen Anhänger zu organisieren, wenn das auf bestimmten Strecken möglich ist.",
+  "CONFIRMATIONP2" : "Der Betriebsleiter der Region oder Linie, auf der Sie unterwegs sind, schickt Ihnen eine E-Mail. Und das, sobald er sich vergewissert hat, dass der Transport Ihres Fahrrads problemlos möglich ist.",
+
+  "CONTACT" : "Kontakt",
+  "CONTACTTITRE" : "Kontaktformular",
+  "TEXTE" : "Text",
+  "BOUTONENVOIMAIL" : "E-Mail senden",
+
+  "ERREUREMAILENVOYE" : "E-Mail gesendet",
+  "ERREURPLUSIEURSZONES" : "Es ist nicht möglich, in mehreren Bereichen zu buchen",
+  "ERREURSTATIONARRIVEEPASPROJET" : "Die Ankunftsstation ist nicht Teil des Resabike-Projekts. Wenn Sie einen Vorschlag für eine neue Station einreichen möchten, kontaktieren Sie uns bitte über unser ",
+  "ERREURSTATIONDEPARTPASPROJET" : "Die Abfahrtsstation ist nicht Teil des Resabike-Projekts. Wenn Sie einen Vorschlag für eine neue Station einreichen möchten, kontaktieren Sie uns bitte über unser ",
+  "ERREURSTATIONDEPARTETARRIVEEPASPROJET" : "Die Ankunftsstation und Abfahrtsstation sind nicht Teil des Resabike-Projekts. Wenn Sie einen Vorschlag für eine neue Station einreichen möchten, kontaktieren Sie uns bitte über unser ",
+  "ERREURPASDECONNEXIONS": "Es gibt keine Reise für diesen Zeitplan.",
+
+  "LIENFORMULAIRECONTACT" :"Kontaktformular",
+
+  "CHAMPSOBLIGATOIRES" : "*Pflichtfelder",
+  "MESSAGESTATISTIQUES" : "Postleitzahl und Land werden nur für statistische Zwecke verwendet.",
+
+  "CG" :"Allgemeine Geschäftsbedingungen",
+  "CGAcceptation" :"Ich habe die allgemeinen Geschäftsbedingungen gelesen und akzeptiere sie : ",
+
+  "JOURS":{
+    "1" :"Montag ",
+    "2" :"Dienstag ",
+    "3" :"Mittwoch ",
+    "4" :"Donnerstag ",
+    "5" :"Freitag ",
+    "6" :"Samstag ",
+    "0" :"Sonntag "
+  },
+
+  "CONNEXION": "Anmelden",
+  "MOTDEPASSE": "Passwort",
+
+  "RESERVATIONS": "Reservierungen",
+  "GESTIONLIGNES": "Linienverwaltung",
+  "GESTIONINFO": "Informationsmanagement",
+  "GESTIONZONES": "Zonenverwaltung"
+}

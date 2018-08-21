@@ -1,0 +1,14 @@
+extends layout_login
+
+block content
+    div(style="margin:40px")
+        h3 #{translation.CONNEXION}
+            br
+            font(size="3", color='red') #{messageErreur}
+            form(action='/grp17/login', method='POST')
+                br
+                input(type='text', name="loginUsername", placeholder='Login', autofocus, required)
+                br
+                input(type='password', name="loginPassword", placeholder='Password', autofocus, required)
+                br
+                button.btn.waves-effect.waves-light.background.red.accent-4(type="submit", name="action") #{translation.CONNEXION}

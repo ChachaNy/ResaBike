@@ -1,0 +1,33 @@
+{
+  "name": "resabike-millius-preperier",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "node ./node_modules/.bin/_mocha --recursive ./test/ -name '*.test.js' --timeout 10000",
+    "unit": "mocha"
+  },
+  "dependencies": {
+    "axios": "^0.17.0",
+    "bcrypt": "^1.0.3",
+    "body-parser": "~1.18.2",
+    "chai": "^4.1.2",
+    "cookie-parser": "^1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "express-session": "^1.15.6",
+    "forever": "^0.15.3",
+    "i18n": "^0.8.3",
+    "i18n-express": "^1.1.3",
+    "location": "0.0.1",
+    "mocha": "^5.1.0",
+    "morgan": "~1.9.0",
+    "mysql2": "^1.4.2",
+    "nodemailer": "^4.3.1",
+    "pug": "2.0.0-beta11",
+    "sequelize": "^4.13.10",
+    "sequelize-cli": "^3.0.0",
+    "serve-favicon": "~2.4.5",
+    "sqlite3": "^3.1.13"
+  }
+}

@@ -1,0 +1,41 @@
+extends layout_superadmin
+
+block content
+    div(style="margin:40px")
+        h3 Réservations
+        table#tableReservation.highlight
+            thead
+                tr
+                    th Date
+                    th Zone
+                    th Ligne
+                    th Nom groupe
+                    th Station-départ
+                    th Station-arrivée
+                    th Nombre vélos
+                    th Etat
+            tbody
+                each zoneToReservation in zoneToReservations
+                    tr
+                        .zoneToReservation
+                            td
+                                value=translation.JOURS[zoneToReservation.reservationJourneyReservation.dateReservation.dayOfWeek] + zoneToReservation.reservationJourneyReservation.dateReservation.day+'.'+zoneToReservation.reservationJourneyReservation.dateReservation.month+'.'+zoneToReservation.reservationJourneyReservation.dateReservation.year
+                            td
+                                value=zoneToReservation.journeyJourneyReservation.journeyLine.zoneLine.zoneName
+                            td
+                                value=zoneToReservation.journeyJourneyReservation.journeyLine.lineName
+                            td
+                                value=zoneToReservation.reservationJourneyReservation.groupName
+                            td
+                                value=zoneToReservation.reservationJourneyReservation.from
+                            td
+                                value=zoneToReservation.reservationJourneyReservation.to
+                            td
+                                value=zoneToReservation.reservationJourneyReservation.numberBikes
+                            td
+                                if zoneToReservation.reservationJourneyReservation.state === 0
+                                    value='Non confirmé'
+                                if zoneToReservation.reservationJourneyReservation.state === 1
+                                    value='Confirmé'
+                                if zoneToReservation.reservationJourneyReservation.state === 2
+                                    value='Refusé'

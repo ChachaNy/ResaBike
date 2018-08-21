@@ -1,0 +1,72 @@
+{
+  "LAYOUTAPROPOS" : "À propos",
+  "LANGUEMENU" : "Langue",
+
+  "RESERVATIONTITRE" : "Annoncez votre voyage",
+  "STATIONDEPART" : "Station de départ",
+  "STATIONARRIVEE" : "Destination",
+  "DATE1" : "Date du voyage",
+  "HORAIRE" : "Heure de départ",
+  "BOUTONCHERCHER" : "Chercher correspondances",
+  "CORRESPONDANCESTITRE" : "Correspondances",
+  "HEUREDEPART" : "Heure de départ",
+  "HEUREARRIVEE" : "Heure d'arrivée",
+  "OPERATOR" : "Opérateur",
+  "BOUTONRESERVER" : "Réserver",
+
+  "RESUME" : "Votre recherche",
+
+  "NOM" : "Nom",
+  "PRENOM" : "Prénom",
+  "NOMGROUPE" : "Nom de groupe",
+  "TELEPHONE" : "Téléphone (ex. +41 71 234 56 78)",
+  "EMAIL" : "Email",
+  "REMARQUE" : "Remarque",
+  "NOMBREVELOS" : "Nombre de vélos",
+  "NPA" : "Code postal",
+  "COUNTRY" : "Pays",
+
+  "CONFIRMATIONMERCI" : "Merci d'avoir annoncé votre déplacement avec votre vélo",
+  "CONFIRMATIONP1" : "Laissez-nous juste un moment pour vérifier qu’il y aura suffisamment de places disponibles pour transporter votre vélo! Ou pour, par exemple, organiser une remorque si cela est possible sur certaines lignes.",
+  "CONFIRMATIONP2" : "Un mail vous sera envoyé par le responsable d’exploitation de la région ou de la ligne sur laquelle vous voyagerez. Ceci dès qu’il aura pu s’assurer que le transport de votre vélo pourra se faire sans soucis.",
+
+  "CONTACT" : "Contact",
+  "CONTACTTITRE" : "Formulaire de contact",
+  "TEXTE" : "Texte",
+  "BOUTONENVOIMAIL" : "Envoyer email",
+
+  "ERREUREMAILENVOYE" : "Email envoyé",
+  "ERREURPLUSIEURSZONES" : "Il n'est pas possible de réserver dans plusieurs zones",
+  "ERREURSTATIONARRIVEEPASPROJET" : "La station d'arrivée ne fait pas partie du projet Resabike. Si vous souhaitez nous soumettre une proposition de nouvelle station, merci de nous contacter via notre ",
+  "ERREURSTATIONDEPARTPASPROJET" : "La station de départ ne fait pas partie du projet Resabike. Si vous souhaitez nous soumettre une proposition de nouvelle station, merci de nous contacter via notre ",
+  "ERREURSTATIONDEPARTETARRIVEEPASPROJET" : "La station de départ et la station d'arrivée ne font pas partie du projet Resabike. Si vous souhaitez nous soumettre une proposition de nouvelle station, merci de nous contacter via notre ",
+  "ERREURPASDECONNEXIONS": "Cette ligne n'est malheureusement pas desservie durant la période souhaitée.",
+
+  "LIENFORMULAIRECONTACT" :"formulaire de contact",
+
+  "CHAMPSOBLIGATOIRES" : "*champs obligatoires",
+  "MESSAGESTATISTIQUES" : "Le code postal et le pays ne seront utilisés qu'à des fins de statistiques.",
+
+  "CG" :"Conditions générales ",
+  "CGAcceptation" :"J'ai lu et j'accepte les conditions générales d'utilisation : ",
+
+  "JOURS":{
+    "1" :"Lundi ",
+    "2" :"Mardi ",
+    "3" :"Mercredi ",
+    "4" :"Jeudi ",
+    "5" :"Vendredi ",
+    "6" :"Samedi ",
+    "0" :"Dimanche "
+  },
+
+  "CONNEXION": "Connexion",
+  "MOTDEPASSE": "Mot de passe",
+
+  "RESERVATIONS": "Réservations",
+  "GESTIONLIGNES": "Gestion lignes",
+  "GESTIONINFO": "Gestion informations",
+  "GESTIONZONES": "Gestion zones"
+
+
+}

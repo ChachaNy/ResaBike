@@ -1,0 +1,55 @@
+extends layout_client
+
+block content
+    div(style="margin:40px")
+        h3 #{translation.RESUME}
+        font(size="3") #{translation.STATIONDEPART} : #{from}
+        br
+        font(size="3") #{translation.STATIONARRIVEE} : #{to}
+        br
+        font(size="3") #{translation.DATE1} : #{translation.JOURS[date.substr(0,1)] + date.substr(2,date.length)}
+        br
+        font(size="3") #{translation.HORAIRE} : #{time}
+        br
+        br
+        br
+        h3 #{translation.CORRESPONDANCESTITRE}
+        br
+        table.highlight
+            thead
+                tr
+                    th #{translation.STATIONDEPART}
+                    th #{translation.STATIONARRIVEE}
+                    th #{translation.HEUREDEPART}
+                    th #{translation.HEUREARRIVEE}
+                    th #{translation.OPERATOR}
+                    th
+            tbody(id="timetable")
+                tr
+                    td(align="center" colspan="6" style="text-align:center; background-color:#b3b3cc; font-weight:bold")
+                        value= translation.JOURS[date.substr(0,1)] + date.substr(2,date.length)
+
+                each station in stations
+                    if station.nextDay == true
+                        tr
+                            td(align="center" colspan="6" style="text-align:center; background-color:#b3b3cc; font-weight:bold")
+                                value= translation.JOURS[station.departure.substr(0,1)] + station.departure.substr(2, 10)
+                    tr
+                        .station
+                            td
+                                value=station.from
+                            td
+                                value=station.to
+                            td
+                                value=station.departure.substr(12, 6)
+                            td
+                                value=station.arrival.substr(11, 5)
+                            td
+                                value=station.legs[0].operator
+                            td
+                                form(action='/grp17/client/client_formulaire', method='POST')
+                                    input(hidden=true, value=station.from, name='from')
+                                    input(hidden=true, value=station.to, name='to')
+                                    input(hidden=true, value=station.departure, name='departure')
+                                    input(hidden=true, value=station.arrival, name='arrival')
+                                    button.right.btn.waves-effect.waves-light.background.red.accent-4(type="submit", name="action") #{translation.BOUTONRESERVER}

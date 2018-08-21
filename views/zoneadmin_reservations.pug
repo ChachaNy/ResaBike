@@ -1,0 +1,130 @@
+extends layout_zoneadmin
+
+block content
+    div(style="margin:40px")
+        h3 Réservations
+        div(style='width:400px; margin:0 auto;').row
+            table
+                tbody
+                    tr
+                        th
+                            a.btn.waves-effect.waves-light.background.red.accent-4(href="/grp17/zoneadmin/zoneadmin_reservations/date=" + date.substr(2, date.length) + '-0') <
+                        th
+                            button.btn.waves-effect.waves-light.background.red.accent-4(id='today') #{translation.JOURS[date.substr(0, 1)] + date.substr(2, date.length)}
+                        th
+                            a.btn.waves-effect.waves-light.background.red.accent-4(href="/grp17/zoneadmin/zoneadmin_reservations/date=" + date.substr(2, date.length) + '+1') >
+        br
+        h5 Rechercher réservations
+        div.row
+            div.col.s12
+                table
+                    thead
+                        tr
+                            th.col.s2 N° de ligne
+                            th.col.s2 Opérateur
+                            th.col.s2 Station de départ
+                            th.col.s2 Station d'arrivée
+            div.col.s12
+                each line in reservations
+                   ul.collapsible(data-collapsible='expandable')
+                        li
+                            .collapsible-header.background.red.accent-4.color.white-text
+                                table
+                                    tr
+                                        td.col.s2
+                                            value= line.lineName
+                                        td.col.s2
+                                            value= line.operator
+                                        td.col.s2
+                                            value= line.fromStation
+                                        td.col.s2
+                                            value= line.toStation
+                            .collapsible-body
+                                table
+                                    tr
+                                        th.col.s3 Numéro de voyage
+                                        th.col.s3 Horaires
+                                        th.col.s3 Vélos confirmés
+                                        th.col.s3 Vélos non confirmés
+
+                                ul.collapsible(data-collapsible='expandable')
+                                    each journeyLine in line.journeyLine
+                                        li
+                                            .collapsible-header.background.grey.accent-4.color.white-text
+                                                table
+                                                    tr
+                                                        - var nbBikeConfirmed = 0
+                                                        - var nbBikeNoConfirmed = 0
+                                                        each reservationJourney in journeyLine.journeyJourneyReservation
+                                                            if(reservationJourney.reservationJourneyReservation.state === 1 )
+                                                                - nbBikeConfirmed += reservationJourney.reservationJourneyReservation.numberBikes;
+                                                            if(reservationJourney.reservationJourneyReservation.state === 0 )
+                                                                - nbBikeNoConfirmed += reservationJourney.reservationJourneyReservation.numberBikes;
+                                                        td.col.s3
+                                                            value= journeyLine.journeyNumber
+                                                        td.col.s3
+                                                            value= journeyLine.horaire
+                                                        td.col.s3 #{nbBikeConfirmed}
+                                                        td.col.s3 #{nbBikeNoConfirmed}
+                                            .collapsible-body
+                                                table
+                                                    thead
+                                                        tr
+                                                            th.col.s1 Nom groupe
+                                                            th.col.s2 Contact
+                                                            th.col.s2 Station de départ
+                                                            th.col.s2 Station d'arrivé
+                                                            th.col.s1 Nombre de vélo
+                                                            th.col.s2 Etat
+                                                            th.col.s2
+                                                    tbody
+                                                        each reservationJourneyReservation in journeyLine.journeyJourneyReservation
+                                                            tr
+                                                                td.col.s1
+                                                                    value= reservationJourneyReservation.reservationJourneyReservation.groupName
+                                                                td.col.s2
+                                                                    value= reservationJourneyReservation.reservationJourneyReservation.firstName + ' ' + reservationJourneyReservation.reservationJourneyReservation.lastName + ' ' + reservationJourneyReservation.reservationJourneyReservation.telephon
+                                                                td.col.s2
+                                                                    value= reservationJourneyReservation.reservationJourneyReservation.from
+                                                                td.col.s2
+                                                                    value= reservationJourneyReservation.reservationJourneyReservation.to
+                                                                td.col.s1
+                                                                    value= reservationJourneyReservation.reservationJourneyReservation.numberBikes
+                                                                td.col.s2
+                                                                    if reservationJourneyReservation.reservationJourneyReservation.state === 0
+                                                                        value='Non confirmé'
+                                                                    if reservationJourneyReservation.reservationJourneyReservation.state === 1
+                                                                        value='Confirmé'
+                                                                    if reservationJourneyReservation.reservationJourneyReservation.state === 2
+                                                                        value='Refusé'
+                                                                td.col.s2
+                                                                    a(href="#modalreservations", data-idreservation=reservationJourneyReservation.reservationJourneyReservation.id_reservation, data-firstnamereservation=reservationJourneyReservation.reservationJourneyReservation.firstName, data-lastnamereservation=reservationJourneyReservation.reservationJourneyReservation.lastName, data-telephonreservation=reservationJourneyReservation.reservationJourneyReservation.telephon, data-emailreservation=reservationJourneyReservation.reservationJourneyReservation.email, data-remarksreservation=reservationJourneyReservation.reservationJourneyReservation.remarks).waves-effect.waves-light.right.btn.modal-trigger.background.red.accent-4 Accepter/Refuser
+        // Modal Structure
+        #modalreservations.modal.modal-fixed-footer
+            .modal-content
+                alert("test")
+                h4 Détails de la réservation
+                label(for='idReservation') Id Réservation
+                input.validate(disabled="", type='text', id="idReservation", autofocus)
+                br
+                label(for='firstnameReservation') Prénom
+                input.validate(disabled="", type='text', id="firstnameReservation", autofocus)
+                br
+                label(for='lastnameReservation') Nom de famille
+                input.validate(disabled="", type='text', id="lastnameReservation", autofocus)
+                br
+                label(for='telephonReservation') N° téléphone
+                input.validate(disabled="", type='text', id="telephonReservation", autofocus)
+                br
+                label(for='emailReservation') Email
+                input.validate(disabled="", type='text', id="emailReservation", autofocus)
+                br
+                label(for='remarksReservation') Remarques
+                input.validate(disabled="", type='text', id="remarksReservation", autofocus)
+                br
+            .modal-footer
+                button.modal-action.btn.waves-effect.waves-light.background.red.accent-4(onclick='acceptReservation()') Accepter
+                button.modal-action.btn.waves-effect.waves-light.background.red.accent-4(onclick='refuseReservation()') Refuser
+
+
+

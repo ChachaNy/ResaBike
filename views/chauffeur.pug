@@ -1,0 +1,88 @@
+extends layout_chauffeur
+
+block content
+    div(style="margin:40px")
+        h3 Réservations
+        div(style='width:400px; margin:0 auto;').row
+            table.col.s12
+                thead
+                    tr
+                        th
+                            a.btn.waves-effect.waves-light.background.red.accent-4(href="/grp17/chauffeur/date=" + date.substr(2, date.length) + '-0') <
+                        th
+                            button.btn.waves-effect.waves-light.background.red.accent-4(id='today') #{translation.JOURS[date.substr(0, 1)] + date.substr(2, date.length)}
+                        th
+                            a.btn.waves-effect.waves-light.background.red.accent-4(href="/grp17/chauffeur/date=" + date.substr(2, date.length) + '+1') >
+        br
+        h5 Rechercher réservations
+        div.row
+            div.col.s12
+                table
+                    thead
+                        tr
+                            th.col.s2 N° de ligne
+                            th.col.s2 Opérateur
+                            th.col.s2 Station de départ
+                            th.col.s2 Station d'arrivé
+            div.col.s12
+                each line in reservations
+                    ul.collapsible(data-collapsible='expandable')
+                        li
+                            .collapsible-header.background.red.accent-4.color.white-text
+                                table
+                                    tr
+                                        td.col.s2
+                                            value= line.lineName
+                                        td.col.s2
+                                            value= line.operator
+                                        td.col.s2
+                                            value= line.fromStation
+                                        td.col.s2
+                                            value= line.toStation
+                            .collapsible-body
+                                table
+                                    tr
+                                        th.col.s3 Numéro de voyage
+                                        th.col.s3 Horaires
+                                        th.col.s3 Vélos confirmés
+
+                                ul.collapsible(data-collapsible='expandable')
+                                    each journeyLine in line.journeyLine
+                                        li
+                                            .collapsible-header.background.grey.accent-4.color.white-text
+                                                table
+                                                    tr
+                                                        - var nbBikeConfirmed = 0
+                                                        each reservationJourney in journeyLine.journeyJourneyReservation
+                                                            if(reservationJourney.reservationJourneyReservation.state === 1 )
+                                                                - nbBikeConfirmed += reservationJourney.reservationJourneyReservation.numberBikes;
+                                                        td.col.s3
+                                                            value= journeyLine.journeyNumber
+                                                        td.col.s3
+                                                            value= journeyLine.horaire
+                                                        td.col.s3 #{nbBikeConfirmed}
+                                            .collapsible-body
+                                                table
+                                                    thead
+                                                        tr
+                                                            th.col.s1 Nom groupe
+                                                            th.col.s2 Contact
+                                                            th.col.s2 Station de départ
+                                                            th.col.s2 Station d'arrivé
+                                                            th.col.s1 Nombre de vélo
+                                                            th.col.s2 Etat
+                                                    tbody
+                                                        each reservationJourneyReservation in journeyLine.journeyJourneyReservation
+                                                            tr
+                                                                td.col.s1
+                                                                    value= reservationJourneyReservation.reservationJourneyReservation.groupName
+                                                                td.col.s2
+                                                                    value= reservationJourneyReservation.reservationJourneyReservation.firstName + ' ' + reservationJourneyReservation.reservationJourneyReservation.lastName + ' ' + reservationJourneyReservation.reservationJourneyReservation.telephon
+                                                                td.col.s2
+                                                                    value= reservationJourneyReservation.reservationJourneyReservation.from
+                                                                td.col.s2
+                                                                    value= reservationJourneyReservation.reservationJourneyReservation.to
+                                                                td.col.s1
+                                                                    value= reservationJourneyReservation.reservationJourneyReservation.numberBikes
+                                                                td.col.s2
+                                                                        value='confirmé'

@@ -1,0 +1,42 @@
+extends layout_zoneadmin
+
+block content
+    div(style="margin:40px")
+        h3 Chauffeur de bus
+            br
+            label(for='idLogin') Id Login
+            input.validate(disabled="", type='text', id="idLogin", value=login.id_login, autofocus)
+            br
+            label(for='busdriverUsername') Login
+            input(type='text', id="busdriverUsername", value=login.username, autofocus)
+            br
+            label(for='busdriverPassword') Password
+            input(type='text', id="busdriverPassword", value=login.password, autofocus)
+            br
+            ul(style="color:red; font-size:15px")
+                li(id="errorLoginDriver" hidden) Le login chauffeur est requis
+                li(id="errorPwdDriver" hidden) Le mot de passe chauffeur doit être vide (pas modifié) ou minimum 6 caractères
+            br
+            button.btn.waves-effect.waves-light.background.red.accent-4(onclick='updateBusDriver()') Enregistrer
+            br
+            br
+        h3 Personne de contact
+            br
+            label(for='idPersonContact') Id Login
+            input.validate(disabled="", type='text', id="idPersonContact", value=personContact.id_personContact, autofocus)
+            br
+            label(for='firstname') Prénom
+            input(type='text', id="firstname", value=personContact.firstName, autofocus)
+            br
+            label(for='lastname') Nom de famille
+            input(type='text', id="lastname", value=personContact.lastName, autofocus)
+            br
+            label(for='telephon') N° téléphone
+            input(type='text', id="telephon",value=personContact.telephon, autofocus)
+            br
+            label(for='email') Email
+            input(type='text', id="email", value=personContact.email, autofocus)
+            br
+            button.btn.waves-effect.waves-light.background.red.accent-4(onclick='updatePersonContact()') Enregistrer
+            br
+            br
